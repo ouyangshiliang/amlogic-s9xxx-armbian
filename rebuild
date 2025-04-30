@@ -85,7 +85,7 @@ kernel_repo="https://github.com/ophub/kernel"
 default_tags="stable"
 kernel_usage=""
 # Set the list of kernels used by default(Selectable version)
-stable_kernel=("6.1.y" "6.12.y")
+stable_kernel=("6.1.y" "6.6.y" "6.12.y")
 flippy_kernel=(${stable_kernel[@]})
 dev_kernel=(${stable_kernel[@]})
 beta_kernel=(${stable_kernel[@]})
@@ -294,7 +294,8 @@ check_data() {
             grep -E "^[^#].*${board_list}$" | awk -F':' '{print $9}' |
             sort -u | xargs
     ))
-    [[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
+error_msg "Missing [ KERNEL_TAGS ] settings, stop building."    
+[[ "${#kernel_from[@]}" -eq 0 ]] && error_msg "Missing [ KERNEL_TAGS ] settings, stop building."
     # Replace custom kernel tags
     [[ -n "${kernel_usage}" ]] && {
         for ((i = 0; i < ${#kernel_from[@]}; i++)); do
