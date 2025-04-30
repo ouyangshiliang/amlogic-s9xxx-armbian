@@ -174,7 +174,8 @@ on:
           - zcube1-max
           - zk-r39a
           - zysj
-          - nsy-G68 
+          - nsy-g68
+          - nsy-g16
       armbian_kernel:
         description: "Select kernel version."
         required: false
